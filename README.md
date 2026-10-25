@@ -42,7 +42,7 @@ This is a real local web application, not just a website image. It was built wit
 8. Refresh Chrome, go to **API Settings**, choose a model and click **Test Live Gemini Connection**. A connection is only reported as successful when the Google API actually replies.
 9. Go to **Social Media Generator** → choose a platform and content type, enter a topic, set tone and language → **Generate with AI**. Or go to **AI Chatbot** and ask about social media marketing.
 
-**Recommended initial model:** `gemini-3.5-flash-lite` (fast). If your key doesn't have access to that model, try `gemini-3.8-flash` or `gemini-3.6-flash` in API Settings. The supported IDs reflect Google's model documentation as of October 2026. Model availability, rate limits and charges depend on your Google AI Studio account.
+**Recommended initial model:** `gemini-3.6-flash` (default; best Khmer output). For faster replies try `gemini-3.5-flash-lite`, or `gemini-3.8-flash` for advanced output, in API Settings. The supported IDs reflect Google's model documentation as of October 2026. Model availability, rate limits and charges depend on your Google AI Studio account.
 
 **No key?** You can still explore all pages and use **Try Demo Template**, but this produces clearly labeled **non-AI example content** and is not a substitute for the assignment's real Chatbot API integration.
 
@@ -53,7 +53,7 @@ This is a real local web application, not just a website image. It was built wit
 | Narrow AI topic | Social media marketing and content writing only, restricted through a specialized system instruction |
 | AI API | Real **Google Gemini** `generateContent` requests from the Node server |
 | Social platforms | Facebook, TikTok, Instagram, LinkedIn, YouTube |
-| Six outputs | Caption, Post, Hashtag, Call-to-Action, Content Idea, Marketing Message |
+| Seven outputs | Caption, Post, Hashtag, Call-to-Action, Content Idea, Marketing Message, Video Script (+ Send to OpenArt) |
 | Prompt engineering | Dedicated **Prompt Builder** (editable prompt) plus structured server-side generation prompts |
 | Inputs and outputs | Topic, audience, product facts, tone, length, language (English/Khmer), prompts; generated text and export |
 | Chatbot | Multi-turn marketing assistant with chat history, input/send/clear/copy |

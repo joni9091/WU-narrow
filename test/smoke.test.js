@@ -27,7 +27,7 @@ test('serves all client files and hides .env / server source', async () => {
     const html=await (await fetch(url+'/')).text(); assert.match(html,/Narrow AI Studio/);
     const st=await (await fetch(url+'/api/status')).json();
     assert.deepEqual(st.providers,{gemini:false}); assert.equal(st.apiKeyConfigured,false);
-    assert.deepEqual(st.models.gemini,['gemini-3.5-flash-lite','gemini-3.8-flash','gemini-3.6-flash']);
+    assert.deepEqual(st.models.gemini,['gemini-3.6-flash','gemini-3.5-flash-lite','gemini-3.8-flash']);
     for(const p of ['/.env','/.env.example','/server.js','/package.json','/test/smoke.test.js','/../server.js']) {
       const r=await fetch(url+p);assert.equal(r.status,404,p);
     }
@@ -57,11 +57,11 @@ test('mocked Gemini validates live connection and returns real provider result f
     assert.equal(smoke.status,200);assert.equal((await smoke.json()).text,'OK from mocked Gemini');
     const chat=await post(api.url,'/api/chat',{model:'gemini-3.8-flash',messages:[{role:'user',content:'Write a caption about a café.'}]});
     assert.equal(chat.status,200); assert.equal((await chat.json()).provider,'gemini');
-    for(const platform of ['facebook','tiktok','instagram','linkedin','youtube'])for(const type of ['caption','post','hashtag','cta','idea','marketing']){
+    for(const platform of ['facebook','tiktok','instagram','linkedin','youtube'])for(const type of ['caption','post','hashtag','cta','idea','marketing','script']){
       const gen=await post(api.url,'/api/generate',{model:'gemini-3.5-flash-lite',platform,type,topic:'new coffee shop',language:'Khmer',tone:'Friendly',audience:'students',details:'Locally roasted beans',maxTokens:1800});
       assert.equal(gen.status,200,`${platform}/${type}`); assert.equal((await gen.json()).provider,'gemini');
     }
-    assert.equal(requests.length,32);
+    assert.equal(requests.length,37);
     const a=requests.at(-1);assert.match(a.url,/gemini-3\.5-flash-lite:generateContent$/);assert.equal(a.key,'SECRET_TEST_KEY');
     assert.equal(a.body.generationConfig.maxOutputTokens,1800);
     assert.ok(a.body.systemInstruction.parts[0].text.includes('specialized'));
