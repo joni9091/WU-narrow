@@ -53,7 +53,7 @@ This is a real local web application, not just a website image. It was built wit
 | Narrow AI topic | Social media marketing and content writing only, restricted through a specialized system instruction |
 | AI API | Real **Google Gemini** `generateContent` requests from the Node server |
 | Social platforms | Facebook, TikTok, Instagram, LinkedIn, YouTube |
-| Seven outputs | Caption, Post, Hashtag, Call-to-Action, Content Idea, Marketing Message, Video Script (+ Send to OpenArt) |
+| Seven outputs | Caption, Post, Hashtag, Call-to-Action, Content Idea, Marketing Message, Video Script (+ Send to Google Flow / Meta AI / CapCut) |
 | Prompt engineering | Dedicated **Prompt Builder** (editable prompt) plus structured server-side generation prompts |
 | Inputs and outputs | Topic, audience, product facts, tone, length, language (English/Khmer), prompts; generated text and export |
 | Chatbot | Multi-turn marketing assistant with chat history, input/send/clear/copy |
